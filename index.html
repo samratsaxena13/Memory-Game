@@ -128,7 +128,6 @@
         var fscore = {"apple.png":0,"cherry.png":0,"lemon.png":0,"orange.png":0,"pineapple.png":0,"watermelon.png":0,};
         var dcards = {"card1":"","card2":"","card3":"","card4":"","card5":"","card6":""};
         var audio = document.getElementById("audio");
-        var uncommon = [];
         var common = [];
         var hcards = [];
         var start = "no";
@@ -192,7 +191,7 @@
                 for(i=0; i<=5; i++){
                     id = "card" + (i + 1);
                     background = cards[i];
-                    if(cards.indexOf(background)!=i){common.push(background);}else{uncommon.push(background);}
+                    if(cards.indexOf(background)!=i){common.push(background);}
                 }
             },400);
             setTimeout(function(){
@@ -205,7 +204,7 @@
                     setTimeout(function(){document.getElementById("card6").style.background = "url('main.jpg')";},300);
             },3000)
             setTimeout(function(){
-                if(count==1){fruit = common[Math.floor(Math.random() * common.length)];}else{fruit = uncommon[Math.floor(Math.random() * uncommon.length)];}
+                fruit = common[Math.floor(Math.random() * common.length)];
                 cardl = fscore[fruit];
                 display = "url('" + fruit + "')";
                 document.getElementById("display").style.background = display;
@@ -283,7 +282,5 @@
                 document.getElementById(id).addEventListener("click", showCard);
                 };
             }
-
     </script>
-
 </html>
