@@ -162,8 +162,7 @@
             start = "yes";
             document.getElementById("startModal").removeEventListener('click', checkModal);
             $('#startModal').modal('hide');
-            setTimeout(function(){audio.play();},900)
-            setTimeout(function(){changeCards();},1000);
+            setTimeout(function(){audio.play(); changeCards();},1000);
         }
         
         function changeCards(){
