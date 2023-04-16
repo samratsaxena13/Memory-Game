@@ -162,10 +162,11 @@
             start = "yes";
             document.getElementById("startModal").removeEventListener('click', checkModal);
             $('#startModal').modal('hide');
-            setTimeout(function(){audio.play(); changeCards();},1000);
+            setTimeout(function(){changeCards();},1000);
         }
         
         function changeCards(){
+	    audio.play();
             setTimeout(function(){document.getElementById("time").innerHTML="3";},500);
             setTimeout(function(){document.getElementById("time").innerHTML="2";},1300);
             setTimeout(function(){document.getElementById("time").innerHTML="1";},2500);
