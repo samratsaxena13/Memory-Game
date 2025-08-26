@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+    <body>
+        <div id="c1"></div>
+        <div id="c2"></div>
+        <div id="c3"></div>
+        <div id="c4"></div>
+        <div id="c5"></div>
+        <div id="c6"></div>
+        <button onclick="flip()">Flip</button>
+        <h6 id="hearts">
+            <span class="hearts" onclick="remove(1)" id="heart1">&#10084;</span><br>
+            <span class="hearts" onclick="remove(2)" id="heart2">&#10084;</span><br>
+            <span class="hearts" onclick="remove(3)" id="heart3">&#10084;</span>
+        </h6>
+    </body>
+    <style>
+        div {
+            border: 3px black solid;
+            border-radius: 10px;
+            width: 100px;
+            height: 105px;
+            display: inline-block;
+            background-image: url('main.jpg');
+            transition: transform;
+            transition-duration: 150ms;
+            transform-style: preserve-3d;
+            transition-timing-function: linear;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #hearts {
+            font-size: 40px;
+            color:red;
+            text-shadow:
+                2px 2px 0 darkred,
+                3px 3px 4px #0000004d;
+        }
+        .hearts {
+            display: inline-block;
+            transition: transform 250ms;
+            position: static;
+        }
+    </style>
+    <script>
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        async function turnCard(id,fruit){
+            console.log(document.getElementById(id).style);
+            document.getElementById(id).style.transform = "rotateY(180deg)";
+            await delay(75);
+            document.getElementById(id).style.backgroundImage = "url(" + fruit + ")";   
+        }
+        async function unturnCard(id){
+            document.getElementById(id).style.transform = "rotateY(360deg)";
+            await delay(75);
+            document.getElementById(id).style.backgroundImage = "url('main.jpg')";   
+        }
+        async function flip(){
+            ids = ["c1", "c2", "c3","c4","c5","c6"];
+            fruits = ["apple","cherry","lemon","orange","pineapple","watermelon"]
+            for (let i = 0; i < ids.length; i++) {
+                let id = ids[i];
+                let fruit = fruits[Math.floor(Math.random()*6)] + ".png"
+                await turnCard(id,fruit);
+            }
+            await delay(1000);
+            for (let i = 0; i < ids.length; i++) {
+                let id = ids[i];
+                await unturnCard(id);
+            }
+        }
+        function remove(id){
+            iden = "heart" + id.toString();
+            document.getElementById(iden).style.transitionTimingFunction = "ease-out"
+            document.getElementById(iden).style.transform = "scale(1.5) rotateZ(-20deg)"
+            setTimeout(()=>{
+                document.getElementById(iden).style.transitionTimingFunction = "ease-in"
+                document.getElementById(iden).style.transform = "scale(0) rotateZ(0deg)"
+            },250);
+        }
+    </script>
+</html>

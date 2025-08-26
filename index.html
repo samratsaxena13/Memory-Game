@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Memory Game</title>
+    </head>
+    
+    <body id="body">
+        <center id="main">
+            <h1 id="heading">Memory Game</h1>
+            <h4 class="modal-line">Your Score: <span style="font-size: 25px;" id="score">0</span></h4>
+            <h6 id="hearts">
+                <span class="hearts" id="heart1">&#10084;</span>
+                <span class="hearts" id="heart2">&#10084;</span>
+                <span class="hearts" id="heart3">&#10084;</span>
+            </h6>
+            <div id="disp-container"><div id="display"><h1 id="time" style="color: #ffffff; font-size: 56px;">&nbsp;</h1></div></div><br>
+            <br>
+            <span id="cardsray1" class="cardsray">
+                <div onclick="revealClcikedCard(30)" id="card30" class="card"></div> <!--30-->
+                <div onclick="revealClcikedCard(24)" id="card24" class="card"></div> <!--24-->
+                <div onclick="revealClcikedCard(18)" id="card18" class="card"></div> <!--18-->
+                <div onclick="revealClcikedCard(12)" id="card12" class="card"></div> <!--12-->
+                <div onclick="revealClcikedCard(1)" id="card1" class="card"></div> <!--1-->
+                <div onclick="revealClcikedCard(2)" id="card2" class="card"></div> <!--2-->
+                <div onclick="revealClcikedCard(7)" id="card7" class="card"></div> <!--7-->
+                <div onclick="revealClcikedCard(13)" id="card13" class="card"></div> <!--13-->
+                <div onclick="revealClcikedCard(19)" id="card19" class="card"></div> <!--19-->
+                <div onclick="revealClcikedCard(25)" id="card25" class="card"></div> <!--25-->
+            </span><br><span id="cardsray2" class="cardsray">
+                <div onclick="revealClcikedCard(29)" id="card29" class="card"></div> <!--29-->
+                <div onclick="revealClcikedCard(23)" id="card23" class="card"></div> <!--23-->
+                <div onclick="revealClcikedCard(17)" id="card17" class="card"></div> <!--17-->
+                <div onclick="revealClcikedCard(11)" id="card11" class="card"></div> <!--11-->
+                <div onclick="revealClcikedCard(3)" id="card3" class="card"></div> <!--3-->
+                <div onclick="revealClcikedCard(4)" id="card4" class="card"></div> <!--4-->
+                <div onclick="revealClcikedCard(8)" id="card8" class="card"></div> <!--8-->
+                <div onclick="revealClcikedCard(14)" id="card14" class="card"></div> <!--14-->
+                <div onclick="revealClcikedCard(20)" id="card20" class="card"></div> <!--20-->
+                <div onclick="revealClcikedCard(26)" id="card26" class="card"></div> <!--26-->
+            </span><br><span id="cardsray3" class="cardsray">
+                <div onclick="revealClcikedCard(28)" id="card28" class="card"></div> <!--28-->
+                <div onclick="revealClcikedCard(22)" id="card22" class="card"></div> <!--22-->
+                <div onclick="revealClcikedCard(16)" id="card16" class="card"></div> <!--16-->
+                <div onclick="revealClcikedCard(10)" id="card10" class="card"></div> <!--10-->
+                <div onclick="revealClcikedCard(5)" id="card5" class="card"></div> <!--5-->
+                <div onclick="revealClcikedCard(6)" id="card6" class="card"></div> <!--6-->
+                <div onclick="revealClcikedCard(9)" id="card9" class="card"></div> <!--9-->
+                <div onclick="revealClcikedCard(15)" id="card15" class="card"></div> <!--15-->
+                <div onclick="revealClcikedCard(21)" id="card21" class="card"></div> <!--21-->
+                <div onclick="revealClcikedCard(27)" id="card27" class="card"></div> <!--27-->
+            </span>
+        </center>
+        <div style="text-align: center;" id="startModal" class="modals modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">Welcome!</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">Find all the cards bearing the <span class="empha" style="color: darkblue;">same</span> fruit showed at the top.</h4>
+                        <h4><b><span class="empha" style="color: red;">Lose one life</span> on a wrong move.</b></h4>
+                        <h4><b>One card <span class="empha" style="text-decoration: underline;">added</span> every ten points until 250pts.</b></h4>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                        <h4 class="modal-line">There are eight fruits:</h4><br>
+                        <span>
+                            <img style="width: 80px; height: 80px;" src="apple.png">
+                            <img style="width: 80px; height: 80px;" src="grapes.png">
+                            <img style="width: 80px; height: 80px;" src="kiwi.png">
+                            <img style="width: 80px; height: 80px;" src="lemon.png">
+                        </span><br>
+                        <span>
+                            <img style="width: 80px; height: 80px;" src="orange.png">
+                            <img style="width: 80px; height: 80px;" src="pineapple.png">
+                            <img style="width: 80px; height: 80px;" src="raspberry.png">
+                            <img style="width: 80px; height: 80px;" src="watermelon.png">
+                        </span>
+                        <br><br>
+                        <button onclick="startGame()" class="modal-buttons btn btn-primary">Start Game</button>&nbsp;&nbsp;<span class="hint">(Or Press Enter)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" id="rulesModal" class="modals modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">Rules</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">Find all the cards bearing the <span class="empha" style="color: darkblue;">same</span> fruit showed at the top.</h4>
+                        <h4><b><span class="empha" style="color: red;">Lose one life</span> on a wrong move.</b></h4>
+                        <h4><b>One card <span class="empha" style="text-decoration: underline;">added</span> every ten points until 250pts.</b></h4>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                        <h4 class="modal-line">There are eight fruits:</h4><br>
+                        <span>
+                            <img style="width: 80px; height: 80px;" src="apple.png">
+                            <img style="width: 80px; height: 80px;" src="grapes.png">
+                            <img style="width: 80px; height: 80px;" src="kiwi.png">
+                            <img style="width: 80px; height: 80px;" src="lemon.png">
+                        </span><br>
+                        <span>
+                            <img style="width: 80px; height: 80px;" src="orange.png">
+                            <img style="width: 80px; height: 80px;" src="pineapple.png">
+                            <img style="width: 80px; height: 80px;" src="raspberry.png">
+                            <img style="width: 80px; height: 80px;" src="watermelon.png">
+                        </span><br><br>
+                        <button onclick="closeRules()" class="modal-buttons btn btn-primary">Okay</button>&nbsp;&nbsp;<span class="hint">(Or Press Enter)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" id="overModal" class="modals modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">No More Lives!</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">Your Score: <span style="font-size: 25px;" class="empha" id="modal-score">0</span> </h4>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;"><br>
+                        <button onclick="restartGame()" class="modal-buttons btn btn-primary">Try Again</button>&nbsp;&nbsp;<span class="hint">(Or Press Enter)</span><br><br>
+                        <button onclick="leaveGame()" class="modal-buttons btn btn-danger">Leave Game</button>&nbsp;&nbsp;<span class="hint">(Or Press Escape)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" id="redoModal" class="modals modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">Game in Progress...</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">You have a pending game to finish...</h4>
+                        <h4 class="modal-line">You may continue or restart.</h4>
+                        <h5 style="font-weight: bold;">Played On:&nbsp; <span id="game-day"></span></h5><br>
+                        <button onclick="continueGame()" class="modal-buttons btn btn-success">Continue Playing</button>&nbsp;&nbsp;<span class="hint">(Or Press Enter)</span><br><br>
+                        <button onclick="restartGame()" class="modal-buttons btn btn-danger">Restart Game</button>&nbsp;&nbsp;<span class="hint">(Or Press Espace)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" id="finishModal" class="modals modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">You've Finished the Game!</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line"><span id="conff1">&#127881;</span> You have score the total of 250 points! <span id="conff2">&#127881;</span></h4>
+                        <h4 class="modal-line">Thank you for playing!</h4><br>
+                        <button onclick="leaveGame()" class="modal-buttons btn btn-success">Exit Page</button>&nbsp;&nbsp;<h5 class="finals text-success">(Or Press Escape to KEEP Progress)</h5><br>
+                        <button onclick="restartGame()" class="modal-buttons btn btn-danger">Play Again</button>&nbsp;&nbsp;<h5 class="finals text-danger">(Or Press Enter to RESET Progress)</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <audio id="audio" src="flip.mp3"></audio>
+    </body>
+
+    <style>
+        body {
+            user-select: none;
+            transition: background-color 200ms;
+            font-family: 'Montserrat';
+            background-color: #cecece;
+        }
+        .modals {
+            margin-top: 60px;
+            height: 100%;
+        }
+        #modal-heading {
+            color: blue;
+            font-weight: bolder;
+            text-shadow:
+                1px 1px 0 darkblue,
+                3px 3px 4px #0000004d;
+        }
+        .hint {
+            font-size: 18px;
+        }
+        #conff1 {
+            display: inline-block; 
+            text-shadow: none; 
+            font-size: 30px;
+        }
+        #conff2 {
+            display: inline-block; 
+            text-shadow: none; 
+            font-size: 30px;
+            transform: scaleX(-1);
+        }
+        .modal-line {
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 3px 3px 4px #0000004d;
+        }
+        #heading {
+            color: blue;
+            text-shadow:
+                1.5px 1.5px 0 darkblue,
+                3px 3px 4px #0000004d;
+                font-weight: bolder;
+                font-size: 50px;
+                margin-top: 130px;
+            }
+        .cardsray {
+            margin-top: 10px;
+            transition: opacity 100ms;
+        }
+        #disp-container {
+            box-shadow: 3px 3px 3px #0000004d;
+            background-color: #565656;
+            margin-top: 30px;
+            border: 3px black solid;
+            justify-content: center;
+            border-radius: 10px;
+            display: inline-block;
+            width: 105px;
+            height: 105px;
+        }
+        .finals {
+            font-weight: bold;
+        }
+        .modal-buttons {
+            pointer-events: all;
+        }
+        #display {
+            background: transparent;
+            transition: opacity 100ms ease;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 1px solid transparent;
+            opacity: 0;
+        }
+        #hearts {
+            font-size: 40px;
+            color:red;
+            text-shadow:
+                2px 2px 0 darkred,
+                3px 3px 4px #0000004d;
+        }
+        .hearts {
+            display: inline-block;
+            transition: transform 250ms;
+            position: static;
+        }
+        .card {
+            border: 3px black solid;
+            border-radius: 10px;
+            width: 100px;
+            height: 105px;
+            display: inline-block;
+            background-color: white;
+            background-image: url('main.jpg');
+            transition: transform 200ms;
+            transform-style: preserve-3d;
+            transition-timing-function: linear;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center; 
+            box-shadow: 3px 3px 3px #0000004d;
+            margin: 2px;
+        }
+        .image {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        .empha {
+            text-shadow: 3px 3px 4px #0000004d;
+        }
+        #score {
+            transition: opacity 200ms;
+            transition-timing-function: linear;
+        }
+    </style>
+
+<script>
+    //-----------VARIABLES----------------
+    for (let i=7; i<31; i++){
+        let id = "card" + i.toString();
+        document.getElementById(id).style.visibility = "hidden";
+        document.getElementById(id).style.transform = "scale(0) rotateZ(20deg)";
+    }
+    fruitList = ["apple","grapes","kiwi","lemon","orange","pineapple","raspberry","watermelon"];
+    gameStatus = "Setup";
+    currCards = 6;
+    roundTime = 4;
+    gameScore = 0;
+    gameDay = "";
+    timer = null;
+    timerHit = false;
+    preReq = [];
+    lives = 3;
+    
+    //---------VERY BEGINNING-------------
+    
+    $(document).ready(setTimeout(()=>{
+        if(localStorage.getItem("lives")==="0"){
+            document.getElementById("modal-score").innerText = parseInt(localStorage.getItem("gameScore"));
+            $('#overModal').modal({ backdrop: 'static', keyboard: false });
+            setTimeout(()=>{
+                document.addEventListener('keydown', retryKey);
+            },450);
+        } else if (localStorage.getItem("gameScore")===null){
+            $('#startModal').modal({ backdrop: 'static', keyboard: false });
+            setTimeout(()=>{
+                document.addEventListener('keydown', enterKey);
+            },450);
+        } else if(localStorage.getItem("gameScore")==="250"){
+            congratulate();
+        } else if(localStorage.getItem("gameScore")!=="0"){ 
+            document.getElementById("game-day").innerText = gameDay = localStorage.getItem("gameDay");
+            $('#redoModal').modal({ backdrop: 'static', keyboard: false });
+            setTimeout(()=>{
+                document.addEventListener('keydown', continueKey);
+            },450);
+        } else if (localStorage.getItem("gameScore")==="0"){
+            $('#startModal').modal({ backdrop: 'static', keyboard: false });
+            setTimeout(()=>{
+                document.addEventListener('keydown', enterKey);
+            },450);
+        }
+    },500));
+    
+    function congratulate(){
+        $('#finishModal').modal({ backdrop: 'static', keyboard: false });
+        document.addEventListener('keydown', function(e){
+            if(e.key==="Enter"){
+                localStorage.clear();
+                location.reload();
+            } else if (e.key==="Escape"){
+                window.close();
+            }
+        });
+    }
+    
+    //-----REDO-----------
+    function closeRules(){$('#rulesModal').modal('hide');}
+    function removeAddedCards(){
+        for (let i=7; i<31; i++){
+            let id = "card" + i.toString();
+            document.getElementById(id).style.visibility = "hidden";
+            document.getElementById(id).style.transform = "scale(0) rotateZ(20deg)";
+        }
+    }
+    function restartGame(){
+        localStorage.clear();
+        $('#redoModal').modal('hide');
+        $('#overModal').modal('hide');
+        gameStatus = "Setup";
+        removeAddedCards();
+        restartUI();
+        timer = null;
+        currCards = 6;
+        roundTime = 4;
+        gameScore = 0;
+        gameDay = "";
+        preReq = [];
+        lives = 3;
+        startGame();
+    }
+    function redoGame(){
+        localStorage.clear();
+        $('#redoModal').modal('hide');
+        $('#overModal').modal('hide');
+        gameStatus = "Setup";
+        timer = null;
+        currCards = 6;
+        roundTime = 4;
+        gameScore = 0;
+        gameDay = "";
+        preReq = [];
+        lives = 3;
+        startGame();
+    }
+    function continueKey(e){
+        if (e.key==="Escape"){redoGame();}
+        else if (e.key==="Enter"){continueGame();}
+    }
+    function continueGame(){
+        gameScore = parseInt(localStorage.getItem("gameScore"));
+        roundTime = parseInt(localStorage.getItem("roundTime"));
+        currCards = parseInt(localStorage.getItem("currCards"));
+        lives = parseInt(localStorage.getItem("lives"));
+        timer = null;
+        timerHit = false;
+        diff = currCards - 6;
+        if(diff>0){updateCardsPrev(diff)}
+        if(lives<3){updateHearts();}
+        updateScore();
+        $('#redoModal').modal('hide');
+        setTimeout(()=>{
+            document.addEventListener('keydown', readRules);
+            processRound();
+        },1000);
+    }
+    function leaveGame(){
+        localStorage.clear();
+        window.close();
+    }
+    function retryKey(e){
+        if (e.key==="Escape"){leaveGame();}
+        else if (e.key==="Enter"){restartGame();}
+    }
+    function endGame(){
+        setTimeout(()=>{
+            document.getElementById("display").style.backgroundImage = "";
+            $('#overModal').modal({ backdrop: 'static', keyboard: false });
+            setTimeout(()=>{
+                document.removeEventListener('keydown', readRules);
+                document.addEventListener('keydown', retryKey);
+            },450);
+        },500);
+    }
+    function scaleUp(){
+        if(nextCard<31){
+            let id = "card" + nextCard.toString();
+            document.getElementById(id).style.visibility = "visible";
+            document.getElementById(id).style.transform = "scale(1) rotateZ(0)";
+            nextCard++;
+        }
+    }
+    
+    //----HELPING FUNCTIONS------------
+    function countFruits(arr,fruit){
+        let count = arr.filter(x => x === fruit).length;
+        return count;
+    }
+    function makeDate(){
+        return new Date().toLocaleString('en-GB', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        });
+    }
+    function turnCard(id,fruit){
+        document.getElementById(id).style.transform = "scaleX(-1) rotateY(180deg)";
+        setTimeout(function(){
+            document.getElementById(id).style.boxShadow = "3px 3px 3px #0000004d";
+            document.getElementById(id).style.backgroundImage = "url(" + fruit + ")";
+        },100);
+    }
+    function unturnCard(id){
+        document.getElementById(id).style.transform = "scaleX(1) rotateY(360deg)";
+        setTimeout(function(){
+            document.getElementById(id).style.boxShadow = "3px 3px 3px #0000004d";
+            document.getElementById(id).style.backgroundImage = "url('main.jpg')";
+        },100);
+    }
+    
+    //-----INITIAL GAME------------
+    function enterKey(e){
+        if (e.key==="Enter"){startGame();}
+    }
+    function readRules(e){
+        if(e.key==="r" || e.key==="R"){
+            $('#rulesModal').modal();
+            document.addEventListener('keydown', function(e){
+                if(e.key==="Enter"){$('#rulesModal').modal('hide');}
+            });
+        }
+    }
+    function startGame(e){
+        gameDay = makeDate();
+        localStorage.setItem("gameDay",gameDay);
+        localStorage.setItem("gameScore",0);
+        localStorage.setItem("roundTime",4);
+        localStorage.setItem("currCards",6);
+        localStorage.setItem("lives",3);
+        document.removeEventListener('keydown', enterKey);
+        gameStatus = "Begun";
+        timerHit = false;
+        timer = null;
+        document.body.style.pointerEvents = "none";
+        $('#startModal').modal('hide');
+            setTimeout(()=>{
+                document.addEventListener('keydown', readRules);
+                processRound();
+            },1000);
+        }
+        function refreshGame(){
+            preReq = [];
+            gameDay = makeDate();
+            timer = null;
+            timerHit = false;
+            localStorage.setItem("gameDay",gameDay);
+            localStorage.setItem("currCards",currCards);
+            localStorage.setItem("roundTime",roundTime);
+            localStorage.setItem("gameScore",gameScore);
+            localStorage.setItem("lives",lives);
+            if(gameScore===250){congratulate(); return;}
+            if (gameScore%10===0){
+                roundTime+=1;
+                currCards+=1;
+                updateCards();
+            }
+            processRound();
+        }
+
+        //----CARDS CHOOSING-------------
+        function chooseCards(){
+            let fruits = fruitList;
+            rack = new Array(currCards).fill("");
+            countsdict = {};
+            countsray = [];
+            for (i in rack){
+                let element = fruits[Math.floor(Math.random()*(fruits.length))];
+                if(countFruits(rack,element) < 3){
+                    rack[i] = element;
+                } else {
+                    let filtered = fruits.filter(x => x !== element);
+                    let reElement = filtered[Math.floor(Math.random()*(filtered.length))];
+                    rack[i] = reElement;
+                }
+            }
+            chosenFruits = [...new Set(rack)];
+            let maxOnes = [];
+            let chosenOne = "";
+            for (i in chosenFruits){
+                let item = chosenFruits[i];
+                let count = countFruits(rack, item);
+                countsdict[item] = count;
+                countsray.push(count);
+                let max = Math.max(...countsray);
+                if(countsdict[item]===max){
+                    maxOnes.push(item);
+                }
+            }
+            chosenOne = maxOnes[Math.floor(Math.random()*(maxOnes.length))];
+            countChosen = countFruits(rack, chosenOne);
+            preReq.push(rack,chosenOne,countChosen,lives);
+            gameStatus = "Displaying Cards";
+            return preReq;
+        }
+        
+        function previewCards(fruits){
+            lastID = "card" + currCards.toString();
+            for (let i=1; i<(fruits.length+1); i++){
+                let id = "card" + i.toString();
+                let fruit = fruits[i-1] + ".png"
+                setTimeout(()=>{
+                    turnCard(id,fruit);
+                    if(id===lastID){gameStatus="Counting Down"; return;}
+                },i*70);
+            }
+        }
+        
+        function countDown(){
+            currSeconds = roundTime;
+            document.getElementById("time").innerHTML = currSeconds;
+            document.getElementById("display").style.opacity = 1;
+            setTimeout(()=>{document.getElementById("display").style.opacity = 0;},900);
+            timer = setInterval(()=>{
+                currSeconds--;
+                document.getElementById("time").innerHTML = currSeconds;
+                document.getElementById("display").style.opacity = 1;
+                if (currSeconds === 0){
+                    clearInterval(timer);
+                    document.getElementById("time").innerHTML = "&nbsp;";
+                    gameStatus = "Un-Previewing Cards";
+                    return;
+                }
+                setTimeout(()=>{document.getElementById("display").style.opacity = 0;},900);
+            },1000);
+        }
+        
+        function unPreviewCards(count){
+            for (let i=1; i<(count+1); i++){
+                let id = "card" + i.toString();
+                setTimeout(()=>{unturnCard(id)},i*70);
+            }
+            setTimeout(()=>{gameStatus = "Displaying Chosen One";},(count+3)*70);
+        }
+        
+        function wrongChoice(times){
+            document.body.style.backgroundColor = "#ffc0cb";
+            lives--;
+            updateHearts();
+        }
+
+        function updateScore(){
+            document.getElementById("modal-score").innerHTML = gameScore;
+            document.getElementById("score").style.opacity = 0;
+            setTimeout(()=>{
+                document.getElementById("score").innerHTML = gameScore;
+                document.getElementById("score").style.opacity = 1;
+            },200);
+        }
+        function restartUI(){
+            document.getElementById("heart1").style.transform = "scale(1)"
+            document.getElementById("heart2").style.transform = "scale(1)"
+            document.getElementById("heart3").style.transform = "scale(1)"
+            for (let i=1; i<(currCards+1); i++){
+                let id = "card" + i.toString();
+                unturnCard(id);
+            }
+        }
+        function updateHearts(){
+            let iden, dur, scale;
+            let styleIn = "ease-out";
+            let styleOut = "ease-in";
+            if (lives===2){
+                iden = "heart3"; dur = 250; scale = "1.5";
+            } else if (lives===1){
+                iden = "heart1"; dur = 250; scale = "1.5"; 
+                document.getElementById("heart3").style.transform = "scale(0) rotateZ(0deg)"
+            } else if (lives===0){
+                iden = "heart2"; dur = 500; scale = "2.5"; styleIn = "ease-out"; styleOut = "ease";
+                document.getElementById("heart3").style.transform = "scale(0) rotateZ(0deg)"
+                document.getElementById("heart1").style.transform = "scale(0) rotateZ(0deg)"
+            }
+            document.getElementById(iden).style.transitionTimingFunction = styleIn;
+            document.getElementById(iden).style.transform = "scale(" + scale + ") rotateZ(-20deg)"
+            setTimeout(()=>{
+                document.body.style.backgroundColor = "#cecece";
+                document.getElementById(iden).style.transitionTimingFunction = styleOut;
+                document.getElementById(iden).style.transform = "scale(0) rotateZ(0deg)"
+                if(lives===0){endGame();}
+                else{document.body.style.pointerEvents = "all";}
+            },dur);
+        }
+
+        //For adding single new card
+        function updateCards(){
+            if(currCards<30){
+                let id = "card" + currCards.toString();
+                document.getElementById(id).style.visibility = "visible";
+                document.getElementById(id).style.transform = "scale(1) rotateZ(0)";
+            }
+        }
+        //For restoring the added cards
+        function updateCardsPrev(diff){
+            for(let i=1; i<(diff+1); i++){
+                if(currCards<30){
+                    num = i+6;
+                    let id = "card" + num.toString();
+                    document.getElementById(id).style.visibility = "visible";
+                    document.getElementById(id).style.transform = "scale(1) rotateZ(0)";
+                }
+            }
+        }
+
+        function rightChoice(){
+            preReq[2] = preReq[2] - 1;
+            if (preReq[2] === 0) {
+                gameScore++;
+                localStorage.setItem("gameScore",gameScore);
+                document.body.style.backgroundColor = "#7cff7c";
+                setTimeout(()=>{
+                 for (let i=1; i<(preReq[0].length+1); i++){
+                        let id = "card" + i.toString();
+                        let currImg = document.getElementById(id).style.backgroundImage;
+                        if(currImg.includes("main.jpg")){
+                            let fruit = preReq[0][i-1] + ".png";
+                            turnCard(id,fruit);
+                        }
+                    }
+                },400);
+                setTimeout(()=>{
+                    updateScore();
+                    document.getElementById("display").style.opacity = 0;
+                    document.body.style.backgroundColor = "#cecece";
+                    for (let i=1; i<(preReq[0].length+1); i++){
+                        let id = "card" + i.toString();
+                        unturnCard(id);
+                    }
+                },1400);
+                setTimeout(()=>{
+                    document.getElementById("display").style.backgroundImage = "";
+                    refreshGame();
+                },2000)
+            } else {
+                document.body.style.pointerEvents = "all";
+            }
+        }
+        
+        function displayChosenOne(fruit){
+            document.getElementById("display").style.backgroundImage = "url(" + fruit + ")";
+            document.getElementById("display").style.opacity = 1;
+        }
+        function revealClcikedCard(num){
+            gameDay = makeDate();
+            let id = "card" + num.toString();
+            let currImg = document.getElementById(id).style.backgroundImage;
+            if (currImg.includes("main.jpg")){
+                document.body.style.pointerEvents = "none";
+                let chosen = preReq[1];
+                let fruit = preReq[0][num-1];
+                turnCard(id,(fruit + ".png"));
+                if(fruit===chosen){rightChoice();}
+                else if(fruit!==chosen){setTimeout(()=>{wrongChoice(1);},500);}
+            }
+        }
+        
+        function processRound(){
+            document.body.style.pointerEvents = "none";
+            timerHit = false;
+            gameStatus = "Choosing Cards";
+            let preReq = chooseCards();
+            let cardCount = preReq[0].length;
+            const inLine1 = setInterval(()=>{
+                if (gameStatus === "Displaying Cards"){
+                    fruits = preReq[0];
+                    previewCards(fruits);
+                } else if (gameStatus === "Counting Down"){
+                    if(timerHit===false){
+                        countDown();
+                        timerHit = true;
+                    }
+                } else if (gameStatus === "Un-Previewing Cards"){
+                    timerHit = false;
+                    unPreviewCards(cardCount);
+                } else if (gameStatus === "Displaying Chosen One"){
+                    clearInterval(inLine1);
+                    let chosenOne = preReq[1] + ".png";
+                    displayChosenOne(chosenOne);
+                    setTimeout(()=>{
+                        document.body.style.pointerEvents = "all";
+                        gameStatus = "Choosing Cards";
+                    },100);
+                }
+                },20);
+        }
+    </script>
+
+</html>
