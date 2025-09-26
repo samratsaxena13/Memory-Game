@@ -1,0 +1,106 @@
+body {
+    transition: background-color 200ms;
+    font-family: 'Montserrat';
+    background-color: #cecece;
+    user-select: none;
+}
+
+.card {
+    box-shadow: 3px 3px 3px #0000004d;
+    transition-timing-function: linear;
+    background-image: url('main.jpg');
+    transform-style: preserve-3d;
+    background-repeat: no-repeat;
+    background-position: center; 
+    transition: transform 200ms;
+    background-color: white;
+    border: 3px black solid;
+    background-size: cover;
+    display: inline-block;
+    border-radius: 10px;
+    height: 105px;
+    width: 100px;
+    margin: 2px;
+}
+
+#disp-container {
+    box-shadow: 3px 3px 3px #0000004d;
+    background-color: #565656;
+    border: 3px black solid;
+    justify-content: center;
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 30px;
+    height: 105px;
+    width: 105px;
+}
+#display {
+    transition: opacity 100ms ease;
+    border: 1px solid transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background: transparent;
+    height: 100%;
+    opacity: 0;
+}
+
+#heading {
+    text-shadow: 1.5px 1.5px 0 darkblue,3px 3px 4px #0000004d;
+    font-weight: bolder;
+    margin-top: 130px;
+    font-size: 50px;
+    color: blue;
+}
+.modal-line {
+    text-shadow: 3px 3px 4px #0000004d;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+
+#conff2 {
+    display: inline-block; 
+    transform: scaleX(-1);
+    text-shadow: none; 
+    font-size: 30px;
+}
+#conff1 {
+    display: inline-block; 
+    text-shadow: none; 
+    font-size: 30px;
+}
+
+#modal-heading {
+    text-shadow: 1px 1px 0 darkblue, 3px 3px 4px #0000004d;
+    font-weight: bolder;
+    color: blue;
+}
+
+#hearts {
+    text-shadow: 2px 2px 0 darkred, 3px 3px 4px #0000004d;
+    font-size: 40px;
+    color:red;
+}
+.hearts {
+    transition: transform 250ms;
+    display: inline-block;
+    position: static;
+}
+
+.image {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+#score {
+    transition-timing-function: linear;
+    transition: opacity 200ms;
+}
+
+.cardsray {transition: opacity 100ms; margin-top: 10px;}
+.empha {text-shadow: 3px 3px 4px #0000004d;}
+.modals {margin-top: 60px; height: 100%;}
+.modal-buttons {pointer-events: all;}
+.finals {font-weight: bold;}
+.hint {font-size: 18px;}

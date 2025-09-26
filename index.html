@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js"></script>
+        <title>Memory Game</title>
+    </head>
+    
+    <body id="body">
+        <center id="main">
+            <h1 id="heading">Memory Game</h1>
+            <h4 class="modal-line">Your Score: <span style="font-size: 25px;" id="score">0</span></h4>
+            <h6 id="hearts">
+                <span class="hearts" id="heart1">&#10084;</span>
+                <span class="hearts" id="heart2">&#10084;</span>
+                <span class="hearts" id="heart3">&#10084;</span>
+            </h6>
+            <div id="disp-container"><div id="display"><h1 id="time" style="color: #ffffff; font-size: 56px;">&nbsp;</h1></div></div><br>
+            <br>
+            <span id="cardsray1" class="cardsray">
+                <div onclick="revealClcikedCard(30)" id="card30" class="card"></div> <!--30-->
+                <div onclick="revealClcikedCard(24)" id="card24" class="card"></div> <!--24-->
+                <div onclick="revealClcikedCard(18)" id="card18" class="card"></div> <!--18-->
+                <div onclick="revealClcikedCard(12)" id="card12" class="card"></div> <!--12-->
+                <div onclick="revealClcikedCard(1)" id="card1" class="card"></div> <!--1-->
+                <div onclick="revealClcikedCard(2)" id="card2" class="card"></div> <!--2-->
+                <div onclick="revealClcikedCard(7)" id="card7" class="card"></div> <!--7-->
+                <div onclick="revealClcikedCard(13)" id="card13" class="card"></div> <!--13-->
+                <div onclick="revealClcikedCard(19)" id="card19" class="card"></div> <!--19-->
+                <div onclick="revealClcikedCard(25)" id="card25" class="card"></div> <!--25-->
+            </span><br>
+            <span id="cardsray2" class="cardsray">
+                <div onclick="revealClcikedCard(29)" id="card29" class="card"></div> <!--29-->
+                <div onclick="revealClcikedCard(23)" id="card23" class="card"></div> <!--23-->
+                <div onclick="revealClcikedCard(17)" id="card17" class="card"></div> <!--17-->
+                <div onclick="revealClcikedCard(11)" id="card11" class="card"></div> <!--11-->
+                <div onclick="revealClcikedCard(3)" id="card3" class="card"></div> <!--3-->
+                <div onclick="revealClcikedCard(4)" id="card4" class="card"></div> <!--4-->
+                <div onclick="revealClcikedCard(8)" id="card8" class="card"></div> <!--8-->
+                <div onclick="revealClcikedCard(14)" id="card14" class="card"></div> <!--14-->
+                <div onclick="revealClcikedCard(20)" id="card20" class="card"></div> <!--20-->
+                <div onclick="revealClcikedCard(26)" id="card26" class="card"></div> <!--26-->
+            </span><br>
+            <span id="cardsray3" class="cardsray">
+                <div onclick="revealClcikedCard(28)" id="card28" class="card"></div> <!--28-->
+                <div onclick="revealClcikedCard(22)" id="card22" class="card"></div> <!--22-->
+                <div onclick="revealClcikedCard(16)" id="card16" class="card"></div> <!--16-->
+                <div onclick="revealClcikedCard(10)" id="card10" class="card"></div> <!--10-->
+                <div onclick="revealClcikedCard(5)" id="card5" class="card"></div> <!--5-->
+                <div onclick="revealClcikedCard(6)" id="card6" class="card"></div> <!--6-->
+                <div onclick="revealClcikedCard(9)" id="card9" class="card"></div> <!--9-->
+                <div onclick="revealClcikedCard(15)" id="card15" class="card"></div> <!--15-->
+                <div onclick="revealClcikedCard(21)" id="card21" class="card"></div> <!--21-->
+                <div onclick="revealClcikedCard(27)" id="card27" class="card"></div> <!--27-->
+            </span>
+        </center>
+        <div style="text-align: center;" id="startModal" class="modals modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">Welcome!</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">Find all the cards bearing the <span class="empha" style="color: darkblue;">same</span> fruit showed at the top.</h4>
+                        <h4><b><span class="empha" style="color: red;">Lose one life</span> on a wrong move.</b></h4>
+                        <h4><b>One card <span class="empha" style="text-decoration: underline;">added</span> every ten points until <span class="empha" style="color: darkblue;">250pts.</span></b></h4>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                        <h4 class="modal-line">There are eight fruits:</h4><br>
+                        <span>
+                            <img style="width: 80px; height: 80px;" src="apple.png">
+                            <img style="width: 80px; height: 80px;" src="grapes.png">
+                            <img style="width: 80px; height: 80px;" src="kiwi.png">
+                            <img style="width: 80px; height: 80px;" src="lemon.png">
+                        </span><br>
+                        <span>
+                            <img style="width: 80px; height: 80px;" src="orange.png">
+                            <img style="width: 80px; height: 80px;" src="pineapple.png">
+                            <img style="width: 80px; height: 80px;" src="raspberry.png">
+                            <img style="width: 80px; height: 80px;" src="watermelon.png">
+                        </span>
+                        <br><br>
+                        <button onclick="startGame()" class="modal-buttons btn btn-primary">Start Game</button>&nbsp;&nbsp;<span class="hint">(Or Press Enter)</span>
+                        <h5><b><i>(Press R to open Rules)</i></b></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" id="rulesModal" class="modals modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">Rules</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">Find all the cards bearing the <span class="empha" style="color: darkblue;">same</span> fruit showed at the top.</h4>
+                        <h4><b><span class="empha" style="color: red;">Lose one life</span> on a wrong move.</b></h4>
+                        <h4><b>One card <span class="empha" style="text-decoration: underline;">added</span> every ten points until <span class="empha" style="color: darkblue;">250pts.</span></b></h4>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                        <h4 class="modal-line">There are eight fruits:</h4><br>
+                        <span>
+                            <img style="width: 80px; height: 80px;" src="apple.png">
+                            <img style="width: 80px; height: 80px;" src="grapes.png">
+                            <img style="width: 80px; height: 80px;" src="kiwi.png">
+                            <img style="width: 80px; height: 80px;" src="lemon.png">
+                        </span><br>
+                        <span>
+                            <img style="width: 80px; height: 80px;" src="orange.png">
+                            <img style="width: 80px; height: 80px;" src="pineapple.png">
+                            <img style="width: 80px; height: 80px;" src="raspberry.png">
+                            <img style="width: 80px; height: 80px;" src="watermelon.png">
+                        </span><br><br>
+                        <button onclick="closeRules()" class="modal-buttons btn btn-primary">Okay</button>&nbsp;&nbsp;<span class="hint">(Or Press Enter)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" id="overModal" class="modals modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">No More Lives!</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">Your Score: <span style="font-size: 25px;" class="empha" id="modal-score">0</span></h4>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;"><br>
+                        <button onclick="tryAgain()" class="modal-buttons btn btn-primary">Try Again</button>&nbsp;&nbsp;<span class="hint">(Or Press Enter)</span><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" id="redoModal" class="modals modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">Game in Progress...</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">You have a pending game to finish...</h4>
+                        <h4 class="modal-line">You may continue or restart.</h4>
+                        <h5 style="font-weight: bold;">Played On:&nbsp; <span id="game-day"></span></h5><br>
+                        <button onclick="continueGame()" class="modal-buttons btn btn-success">Continue Playing</button>&nbsp;&nbsp;<span class="hint">(Or Press Enter)</span><br><br>
+                        <button onclick="redoGame()" class="modal-buttons btn btn-danger">Restart Game</button>&nbsp;&nbsp;<span class="hint">(Or Press Espace)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" id="finishModal" class="modals modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">You've Finished the Game!</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line"><span id="conff1">&#127881;</span> You have score the total of 250 points! <span id="conff2">&#127881;</span></h4>
+                        <h4 class="modal-line">Thank you for playing. Take a screenshot!</h4><br>
+                        <h5 id="lastGame-holder" style="font-weight: bold;"></h5><br>
+                        <button onclick="tryAgain()" class="modal-buttons btn btn-danger">Play Again</button>&nbsp;&nbsp;<h5 class="finals text-danger">(Or Press Enter to RESET Progress)</h5>
+                        <h5 class="finals text-success">You may KEEP Progress by exitting.</span></h5><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" id="warningModal" class="modals modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">&#9888;&#65039; Important Note &#9888;&#65039;</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">This game is currently <span class="empha" style="color: red;">not compatible</span> with smaller devices.</h4>
+                        <h4 class="modal-line">You may try playing on a desktop.</h4><br>
+                        <h4 class="modal-line">Futher updates might include compatibilty.</h4><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; background-color: #000000;" id="denialModal" class="modals modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="modal-heading">&#10071; Warning &#10071;</h1>
+                        <hr style="border-color: grey; border-width: 2px; width: 50%;">
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-line">Screenshots or commands are <span class="empha" style="color: red;">not</span> allowed.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        for (let i=7; i<31; i++){
+            let id = "card" + i.toString();
+            document.getElementById(id).style.visibility = "hidden";
+            document.getElementById(id).style.transform = "scale(0) rotateZ(20deg)";
+        }
+    </script>
+</html>
